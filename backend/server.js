@@ -4,6 +4,9 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 
+// import routes :
+import productRoutes from "./routes/products.routes.js";
+
 dotenv.config();
 
 const app = express();
@@ -17,11 +20,17 @@ app.use(morgan("dev")); // log the request.
 app.use(cors());
 
 
-app.get("/test" ,(req, res)=>{
-    res.send ("Hello from PERN Stack");
-    console.log("test Route is accessed");
-    // console.log(res.getHeaders()); // limited information is provided without helmet
-})
+// initial setup :
+
+// app.get("/test" ,(req, res)=>{
+//     res.send ("Hello from PERN Stack");
+//     console.log("test Route is accessed");
+//     // console.log(res.getHeaders()); // limited information is provided without helmet
+// })
+
+// APIs :
+
+app.use("/api/products" , productRoutes);
 
 
 app.listen(PORT,()=>{
