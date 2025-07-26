@@ -1,8 +1,10 @@
 import { create } from "zustand";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Meta } from "react-router-dom";
 
-const BASE_URL = "http://localhost:3000";
+// base url will be dynamic: based on the production and development
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:3000" : "";
 
 export const useProductStore = create((set,get)=>({
     // product state :
