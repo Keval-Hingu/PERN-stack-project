@@ -28,5 +28,19 @@ export const useProductStore = create((set,get)=>({
         }finally{
             set({loading:false});
         }
+    },
+
+    deleteProduct : async(id)=> {
+        set({loading:true});
+        try{
+            await axios.delete(`${BASE_URL}/api/products/${id}`);
+            set(prev => ({products: prev.products.filter(product => product.id !== id)}));
+            toast.success("Product deleted Successfully.");
+        }catch(error){
+            console.log("ERROR FRONTEND: In DeleteProduct function");
+            toast.error("Something Went wrong");
+        }finally{
+            set({loading:false});
+        }
     }
 }))
