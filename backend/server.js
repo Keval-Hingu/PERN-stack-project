@@ -26,7 +26,7 @@ app.use(cors());
 app.use(async (req, res, next) => {
   try {
       const decision = await aj.protect(req, {
-      requested: 2, // specifies that each request consumes 1 token
+      requested: 1, // specifies that each request consumes 1 token
     });
 
     if (decision.isDenied()) {
